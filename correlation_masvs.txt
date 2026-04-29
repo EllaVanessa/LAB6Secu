@@ -1,0 +1,67 @@
+Corrélation MASVS :
+-----------------
+
+Vulnérabilité : Insecure SSL Implementation
+Référence MASVS : MSTG-NETWORK-2
+Description : L’application doit valider correctement les certificats SSL/TLS.
+Preuve : Utilisation de connexions HTTPS sans validation stricte des certificats.
+Impact : Attaque Man-In-The-Middle (MITM), interception des données.
+
+Vulnérabilité : Weak Cryptography (AES/CBC)
+Référence MASVS : MSTG-CRYPTO-3
+Description : Les mécanismes cryptographiques doivent garantir la confidentialité et l’intégrité.
+Preuve : Utilisation de AES/CBC/PKCS5Padding sans authentification.
+Impact : Attaques de type padding oracle, compromission des données.
+
+Vulnérabilité : SQL Injection Risk
+Référence MASVS : MSTG-PLATFORM-1
+Description : L’application doit utiliser des API sécurisées pour éviter les injections.
+Preuve : Utilisation de requêtes SQL avec concaténation de chaînes.
+Impact : Accès non autorisé à la base de données.
+
+Vulnérabilité : Weak Hash Algorithm (SHA-1)
+Référence MASVS : MSTG-CRYPTO-1
+Description : Utiliser des algorithmes cryptographiques forts.
+Preuve : Utilisation de SHA-1 dans le code.
+Impact : Risque de collisions, falsification des données.
+
+Vulnérabilité : Insecure Random Number Generator
+Référence MASVS : MSTG-CRYPTO-6
+Description : Les générateurs aléatoires doivent être sécurisés.
+Preuve : Utilisation de java.util.Random.
+Impact : Valeurs prévisibles, faiblesse cryptographique.
+
+Vulnérabilité : Hardcoded Sensitive Data
+Référence MASVS : MSTG-STORAGE-14
+Description : Les secrets ne doivent pas être stockés en clair dans le code.
+Preuve : 119 secrets détectés dans l’application.
+Impact : Fuite de credentials, compromission de l’application.
+
+Vulnérabilité : Firebase Database Exposed
+Référence MASVS : MSTG-NETWORK-1
+Description : Les communications réseau doivent être sécurisées.
+Preuve : Base Firebase accessible sans authentification.
+Impact : Exposition publique des données.
+
+Vulnérabilité : Sensitive Data Logging
+Référence MASVS : MSTG-STORAGE-3
+Description : Les données sensibles ne doivent pas être exposées dans les logs.
+Preuve : Utilisation de Logcat avec données.
+Impact : Fuite d’informations sensibles.
+
+Vulnérabilité : Root Detection
+Référence MASVS : MSTG-RESILIENCE-1
+Description : L’application doit implémenter des mécanismes de protection contre les environnements compromis.
+Preuve : Vérification des signatures et Build.TAGS.
+Impact : Renforcement de la sécurité (bonne pratique).
+
+Tests MASTG complémentaires :
+---------------------------
+
+Test : MSTG-NETWORK-1
+Description : Vérification de la sécurité des communications réseau.
+Objectif : Identifier les failles SSL/TLS et les risques MITM.
+
+Test : MSTG-CRYPTO-2
+Description : Vérification des implémentations cryptographiques.
+Objectif : Identifier les algorithmes faibles ou mal configurés.
